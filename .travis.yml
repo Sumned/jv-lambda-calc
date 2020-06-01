@@ -1,8 +1,16 @@
 language: java
+dist: xenial
 jdk:
   - openjdk11
+addons:
+  sonarcloud:
+    organization: sumned
+    token:
+      secure: "t/HH0TtvokyUk1GJZpifFKJ56SVBIE/Q01VWvWM8jpJw5mNaumUgPMx2zuyecWXOI/TPgh129AOvVyldkyZD8EBBBSqSfMVKxS3zJbNN7zGbTv2Qsl0tlJ0uYVJd05u3Yk1cDUTE9NzAjWSYRkGnav/foX9uuU9qmQFYsJ8vWqavH4NJHgo9ZAIgKoURPjNzoOQegANwJSYENdxbM9vAtW3IJE5ad
+               0Wym89HKC967WKn4+Unl4PYra6J20Eoe6UQ5LcH/4IfY//nSfM1nAkEXuT59gcv7i2UezmIZcv+dt3QOPXcfkohedgVnzKF8pfasrESeBKuwNTZrWD3adZYZe9gfcZiMZmNgWJczq/+2ZnvGFBUH9IsGeFu+tUvkmPkZ361+vGoAVO4gSIxtTX2crgEeNRBBzNLkoUDgvJ2HlMqqlWhoxYgM3i2UoSiFWLh6QUhE
+               PK/1c7o8YAqIrxxdZNbMGgqbKk7grS0a19k3ArsCJOWEVOOCIXRy507UOdHyAw9hMbzQD6W9mFMKo4yIBmWg8VWaC/9AtWNC1M/ARwNoT0968RB6jbztUTAszsXB4zEQO1Ecop8SQ9+79jtWrUOlKdiyZphza2Z/l/0E3Klas1N3hdwhUmncFBSlQIM+kQsWCv4XBDMDmZWTsc5sWsknL3LFyhnvDDW5evEGCk="
 script:
-  - mvn clean install
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=Sumned_jv-lambda-calc
 cache:
   directories:
-    - $HOME/.m2
+    - "$HOME/.m2"
