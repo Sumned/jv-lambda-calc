@@ -10,6 +10,7 @@ public class CalculatorTest {
     public void checkSum() {
         Assert.assertEquals(2, Calculator.calculate(1, 1, '+'), DELTA);
         Assert.assertEquals(4, Calculator.calculate(2, 2, '+'), DELTA);
+        Assert.assertEquals(0, Calculator.calculate(2, -2, '+'), DELTA);
         Assert.assertEquals(80_000_000_000_000d,
                 Calculator.calculate(40_000_000_000_000d, 40_000_000_000_000d, '+'), DELTA);
     }
@@ -18,6 +19,7 @@ public class CalculatorTest {
     public void checkDifference() {
         Assert.assertEquals(2, Calculator.calculate(3, 1, '-'), DELTA);
         Assert.assertEquals(4, Calculator.calculate(6, 2, '-'), DELTA);
+        Assert.assertEquals(8, Calculator.calculate(6, -2, '-'), DELTA);
         Assert.assertEquals(80_000_000_000_000d,
                 Calculator.calculate(120_000_000_000_000d, 40_000_000_000_000d, '-'), DELTA);
     }
@@ -26,6 +28,7 @@ public class CalculatorTest {
     public void checkMultiply() {
         Assert.assertEquals(1, Calculator.calculate(1, 1, '*'), DELTA);
         Assert.assertEquals(4, Calculator.calculate(2, 2, '*'), DELTA);
+        Assert.assertEquals(-4, Calculator.calculate(2, -2, '*'), DELTA);
         Assert.assertEquals(40_000_000_000_000d,
                 Calculator.calculate(2_000_000d, 20_000_000d, '*'), DELTA);
     }
@@ -34,6 +37,7 @@ public class CalculatorTest {
     public void checkDivide() {
         Assert.assertEquals(2, Calculator.calculate(2, 1, '/'), DELTA);
         Assert.assertEquals(4, Calculator.calculate(2, 0.5, '/'), DELTA);
+        Assert.assertEquals(-4, Calculator.calculate(2, -0.5, '/'), DELTA);
         Assert.assertEquals(20_000_000_000_000d,
                 Calculator.calculate(40_000_000_000_000d, 2, '/'), DELTA);
     }
@@ -42,6 +46,8 @@ public class CalculatorTest {
     public void checkRaise() {
         Assert.assertEquals(2, Calculator.calculate(4, 0.5, '^'), DELTA);
         Assert.assertEquals(4, Calculator.calculate(2, 2, '^'), DELTA);
+        Assert.assertEquals(0.25, Calculator.calculate(2, -2, '^'), DELTA);
+        Assert.assertEquals(1, Calculator.calculate(2, 0, '^'), DELTA);
         Assert.assertEquals(8_000_000_000_000d,
                 Calculator.calculate(20000, 3, '^'), DELTA);
     }
